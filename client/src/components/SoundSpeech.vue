@@ -192,19 +192,19 @@
 			let index = this.voiceList.findIndex(
 				item => item.name === "Google UK English Male"
 			);
-			if (!index) {
+			if (index == -1) {
 				index = this.voiceList.findIndex(item => item.name === "Daniel");
 			}
-			if (!index) {
+			if (index == -1) {
 				index = this.voiceList.findIndex(
 					item => item.name === "English United Kindom"
 				);
 			}
-			if (!index) {
+			if (index == -1) {
 				index = this.voiceList.findIndex(item => item.name === "Alex");
 			}
 			//set voice or alternative voice
-			if (!index) {
+			if (index == -1) {
 				this.textSpeech.voice = this.voiceList[this.voiceList];
 			} else {
 				this.textSpeech.voice = this.voiceList[index];
