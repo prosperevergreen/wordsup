@@ -44,7 +44,7 @@
 			rulesArray: [[value => !!value || "Required."]],
 			valid: false,
 			words: [""],
-			wordsInfo: "Please input your words. A max. of seven words is allowed",
+			wordsInfo: "Please input your words. A max. of seven words are allowed",
 			overlay: false
 		}),
 		methods: {
