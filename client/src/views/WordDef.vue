@@ -66,7 +66,7 @@
 			</v-col>
 			<v-col cols="6">
 				<div>
-					<v-btn block :disabled="steps != el" color="purple darken-4 white--text" x-large :to="'/part-1'">Next</v-btn>
+					<v-btn block :disabled="steps != el" color="purple darken-4 white--text" x-large @click="canGoNext()">Next</v-btn>
 				</div>
 			</v-col>
 		</v-row>
@@ -108,15 +108,18 @@
 			},
 			async canGoNext() {
 				this.overlay = true
+
 				//prepare data for task
 				await this.generateRandForWordsTask(6);
 				await this.findPicsUrl(this.wordInputs)
 
 				this.overlay = false
 				//go to tasks
-				this.$router.push("/task-one");
+				this.$router.push("/part-1");
 			},
 			async generateRandForWordsTask(numOfRandom) {
+
+				console.log("going to random")
 				//get random number
 				const random = Math.floor(Math.random() * Math.floor(2000));
 				const randWordsEng = await this.$http

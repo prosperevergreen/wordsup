@@ -15,10 +15,10 @@ const PartTwo = () => import(/* webpackPrefetch: true */ "../views/Part2.vue");
 const PartThree = () => import(/* webpackPrefetch: true */ "../views/Part3.vue");
 const Results = () => import(/* webpackPrefetch: true */ "../views/Results.vue");
 
-const EnglishPart = () =>
-  import(/* webpackPrefetch: true */ "../views/EnglishLevel.vue");
-const MemoryPart = () =>
-  import(/* webpackPrefetch: true */ "../views/MemoryLevel.vue");
+// const EnglishPart = () =>
+//   import(/* webpackPrefetch: true */ "../views/EnglishLevel.vue");
+// const MemoryPart = () =>
+//   import(/* webpackPrefetch: true */ "../views/MemoryLevel.vue");
 
 Vue.use(VueRouter);
 
@@ -38,16 +38,16 @@ const routes = [
     name: "signup",
     component: LoginOrSignup,
   },
-  {
-    path: "/english-Part",
-    name: "EnglishPart",
-    component: EnglishPart,
-  },
-  {
-    path: "/memory-Part",
-    name: "MemoryPart",
-    component: MemoryPart,
-  },
+  // {
+  //   path: "/english-Part",
+  //   name: "EnglishPart",
+  //   component: EnglishPart,
+  // },
+  // {
+  //   path: "/memory-Part",
+  //   name: "MemoryPart",
+  //   component: MemoryPart,
+  // },
   {
     path: "/users-words",
     name: "UserInputs",
