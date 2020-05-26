@@ -106,11 +106,11 @@
 					this.e1 = n + 1;
 				}
 			},
-			canGoNext() {
+			async canGoNext() {
 				this.overlay = true
 				//prepare data for task
-				this.generateRandForWordsTask(6);
-				this.findPicsUrl(this.wordInputs)
+				await this.generateRandForWordsTask(6);
+				await this.findPicsUrl(this.wordInputs)
 
 				this.overlay = false
 				//go to tasks
