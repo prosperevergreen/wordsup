@@ -75,7 +75,10 @@
 					let existArr = await this.setExist();
 					this.overlay = false;
 					if (this.$refs.form.validate()) {
-						this.$store.commit("setWords", this.words);
+						let wordList = this.words.map(word => {
+							return word.toLowerCase();
+						});
+						this.$store.commit("setWords", wordList);
 						var count = 0;
 						var hasMultiDef = false;
 						var multiDefArrayIndex = [];
