@@ -194,7 +194,7 @@
 
 			//set voice or alternative voice
 			if (!index) {
-				this.greetingSpeech.voice = this.voiceList[this.voiceList];
+				this.greetingSpeech.voice = this.voiceList[0];
 			} else {
 				this.greetingSpeech.voice = this.voiceList[index];
 			}

@@ -17,15 +17,15 @@
 
 			<v-stepper-items>
 				<v-stepper-content step="1" style="padding-bottom: 10px;">
-					<word-sound-task v-if="e1 == 1" :sound="optionListEng"  :que="question" :ans="question" :queCounter="taskQuestionCounter+1" :numQueLeft="numQueLeft" :successRate="rate"  @onCheck="checked($event)" @onNext="nextQue()" />
+					<word-sound-task v-if="e1 == 1" :sound="optionListEng" :que="question" :ans="question" :queCounter="taskQuestionCounter+1" :numQueLeft="numQueLeft" :successRate="rate" @onCheck="checked($event)" @onNext="nextQue()" />
 				</v-stepper-content>
 
 				<v-stepper-content step="2" style="padding-bottom: 10px;">
-					<word-trans-task v-if="e1 == 2" :trans="optionListRu" :que="question" :ans="answer" :queCounter="taskQuestionCounter+1" :numQueLeft="numQueLeft" :successRate="rate"  @onCheck="checked($event)" @onNext="nextQue()" />
+					<word-trans-task v-if="e1 == 2" :trans="optionListRu" :que="question" :ans="answer" :queCounter="taskQuestionCounter+1" :numQueLeft="numQueLeft" :successRate="rate" @onCheck="checked($event)" @onNext="nextQue()" />
 				</v-stepper-content>
 
 				<v-stepper-content step="3" style="padding-bottom: 10px;">
-					<word-pic-task v-if="e1 == 3" :imageUrl="optionListImgUrl" :que="question" :ans="imageUrl" :queCounter="taskQuestionCounter+1" :numQueLeft="numQueLeft" :successRate="rate"  @onCheck="checked($event)" @onNext="nextQue()" />
+					<word-pic-task v-if="e1 == 3" :imageUrl="optionListImgUrl" :que="question" :ans="imageUrl" :queCounter="taskQuestionCounter+1" :numQueLeft="numQueLeft" :successRate="rate" @onCheck="checked($event)" @onNext="nextQue()" />
 				</v-stepper-content>
 			</v-stepper-items>
 		</v-stepper>
@@ -119,53 +119,61 @@
 			nextQue() {
 				//if there is task do task
 				if (this.taskQuestionCounter < this.taskOrder.length - 1) {
-                    this.taskQuestionCounter++;
+					this.taskQuestionCounter++;
 				} //if there is no task but there is error set new task
 				else if (this.wrongQueAnsNum.length > 0) {
 					this.taskOrder = this.taskOrder.concat(this.wrongQueAnsNum);
 					this.wrongQueAnsNum = [];
-                    this.taskQuestionCounter++;
+					this.taskQuestionCounter++;
 				} //if no task and no errors go to next level and init all values
 				else {
-                    this.disable = false;
-                }
-            },
-            nextTask(){
-                if (this.taskLevelCounter < 2) {
-                    this.taskLevelCounter++;
+					this.disable = false;
+				}
+			},
+			nextTask() {
+				if (this.taskLevelCounter < 2) {
+					this.taskLevelCounter++;
 					this.levelErrorCounter.push(this.taskErrorCounter);
 					this.levelSuccessCounter.push(this.taskSuccessCounter);
 					this.taskErrorCounter = 0;
 					this.taskSuccessCounter = 0;
-                    this.taskQuestionCounter = 0;
-                    this.e1++
-                    this.taskOrder = this.generateTaskOrder(this.taskWordsEng)
-                    this.disable = true;
+					this.taskQuestionCounter = 0;
+					this.e1++;
+					this.taskOrder = this.generateTaskOrder(this.taskWordsEng);
+					this.disable = true;
 				} else {
 					this.levelErrorCounter.push(this.taskErrorCounter);
 					this.levelSuccessCounter.push(this.taskSuccessCounter);
 
 					//recored result
-					this.$store.dispatch('setUserResult', {wrong: this.levelErrorCounter, correct: this.levelSuccessCounter, part: 2})
+					this.$store.dispatch("setUserResult", {
+						wrong: this.levelErrorCounter,
+						correct: this.levelSuccessCounter,
+						part: 2
+					});
 					//go to next level
-					this.$router.push('/results')
-                }
-            }
+					this.$router.push("/results");
+				}
+			}
 		},
 		computed: {
-            //get current question
+			//get current question
 			question() {
-				const question = this.taskWordsEng[this.taskOrder[this.taskQuestionCounter]];
+				const question = this.taskWordsEng[
+					this.taskOrder[this.taskQuestionCounter]
+				];
 				return question;
-            },
-            //get answer for current question
+			},
+			//get answer for current question
 			answer() {
 				const answer = this.taskWordsRu[this.taskOrder[this.taskQuestionCounter]];
 				return answer;
-            },
-            //get image for current question
+			},
+			//get image for current question
 			imageUrl() {
-                const url = this.taskWordsPicUrls[this.taskOrder[this.taskQuestionCounter]];
+				const url = this.taskWordsPicUrls[
+					this.taskOrder[this.taskQuestionCounter]
+				];
 				return url;
 			},
 			//create russian options
@@ -188,8 +196,8 @@
 				);
 				// console.log("opt-eng: " + option);
 				return option;
-            },
-            optionListImgUrl() {
+			},
+			optionListImgUrl() {
 				const option = this.createOptions(
 					this.taskWordsPicUrls[this.taskOrder[this.taskQuestionCounter]],
 					this.taskWordsPicUrls,
@@ -200,8 +208,6 @@
 			},
 			//success rate progress bar
 			rate() {
-				
-
 				return (this.taskSuccessCounter / this.taskWordsEng.length) * 100;
 			},
 			//number of task left
@@ -210,12 +216,17 @@
 			}
 		},
 		created() {
+			//set voice
+			window.speechSynthesis.getVoices();
+			new window.SpeechSynthesisUtterance();
+
+			//get data for task
 			this.taskWordsEng = this.$store.getters.getWords;
 			this.originWordsDetails = this.$store.getters.getExactWordsDetails;
-            this.randomWords = this.$store.getters.getRandomWords;
-            
+			this.randomWords = this.$store.getters.getRandomWords;
+
 			//Get pics for task
-            this.taskWordsPicUrls = this.$store.getters.getWordsPicUrls;
+			this.taskWordsPicUrls = this.$store.getters.getWordsPicUrls;
 
 			//extract russian words
 			this.originWordsDetails.forEach(obj => {

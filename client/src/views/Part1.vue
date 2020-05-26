@@ -113,14 +113,17 @@
 					//disable continue button
 					this.disable = true;
 				} else {
-					
 					this.levelError.push(this.taskError);
 					this.levelSucess.push(this.taskSuccess);
 
 					//recored result
-					this.$store.dispatch('setUserResult', {wrong: this.levelError, correct: this.levelSucess, part: 1})
+					this.$store.dispatch("setUserResult", {
+						wrong: this.levelError,
+						correct: this.levelSucess,
+						part: 1
+					});
 					//go to next level
-					this.$router.push('/results')
+					this.$router.push("/results");
 				}
 			},
 			generateTaskOrder(list) {
@@ -177,6 +180,10 @@
 			}
 		},
 		created() {
+			//set voice
+			window.speechSynthesis.getVoices();
+			new window.SpeechSynthesisUtterance();
+
 			//get data for task
 			this.taskWordsEng = this.$store.getters.getWords;
 			this.taskWordsDetails = this.$store.getters.getExactWordsDetails;

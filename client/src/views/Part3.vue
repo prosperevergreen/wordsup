@@ -92,9 +92,13 @@
 					this.levelSuccessCounter.push(this.taskSuccessCounter);
 
 					//recored result
-					this.$store.dispatch('setUserResult', {wrong: this.levelErrorCounter, correct: this.levelSuccessCounter, part: 3})
+					this.$store.dispatch("setUserResult", {
+						wrong: this.levelErrorCounter,
+						correct: this.levelSuccessCounter,
+						part: 3
+					});
 					//go to next level
-					this.$router.push('/results')
+					this.$router.push("/results");
 				}
 			},
 			//To randomize the task
@@ -160,6 +164,11 @@
 			}
 		},
 		created() {
+			//set voice
+			window.speechSynthesis.getVoices();
+			new window.SpeechSynthesisUtterance();
+
+			//get data for task
 			this.taskWordsEng = this.$store.getters.getWords;
 			this.originWordsDetails = this.$store.getters.getExactWordsDetails;
 			this.randomWords = this.$store.getters.getRandomWords;

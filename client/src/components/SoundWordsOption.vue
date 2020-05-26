@@ -67,7 +67,7 @@
 			colorCorrectAns: null,
 			synth: window.speechSynthesis,
 			voiceList: [],
-			greetingSpeech: new window.SpeechSynthesisUtterance()
+			textSpeech: new window.SpeechSynthesisUtterance()
 		}),
 		methods: {
 			check(value) {
@@ -103,9 +103,9 @@
 			},
 			playSound(sound) {
 				//set statement
-				this.greetingSpeech.text = sound;
+				this.textSpeech.text = sound;
 				//play statement
-				this.synth.speak(this.greetingSpeech);
+				this.synth.speak(this.textSpeech);
 			}
 		},
 		computed: {
@@ -121,17 +121,20 @@
 		},
 		async created() {
 			//get voice
-			this.voiceList = await this.synth.getVoices();
+			this.voiceList = this.synth.getVoices();
+
 			//select voice
 			let index = this.voiceList.findIndex(
 				item => item.name === "Google UK English Male"
 			);
 			//set voice or alternative voice
 			if (!index) {
-				this.greetingSpeech.voice = this.voiceList[this.voiceList];
+				this.textSpeech.voice = this.voiceList[0];
 			} else {
-				this.greetingSpeech.voice = this.voiceList[index];
+				this.textSpeech.voice = this.voiceList[index];
 			}
+
+			// console.log(index);
 		}
 	};
 </script>

@@ -61,7 +61,8 @@
 				this.selected = value;
 				this.noClick = false;
 				//set class for correct and incorrect answer
-				const rightAns = this.options[this.selected].toLowerCase() == this.ans.toLowerCase();
+				const rightAns =
+					this.options[this.selected].toLowerCase() == this.ans.toLowerCase();
 				if (rightAns) {
 					this.activeClass = this.correctClass;
 				} else {
@@ -86,7 +87,7 @@
 				this.noClick = true;
 				this.colorCorrectAns = null;
 				this.$emit("goToNext");
-			},
+			}
 		},
 		computed: {
 			percentageColor() {

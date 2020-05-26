@@ -86,7 +86,6 @@ export default new Vuex.Store({
         result = getters.getUserResult;
       }
       result[userResult.part - 1] = JSON.parse(JSON.stringify(userResult));
-      console.log(result);
       commit("setUserResult", result);
     },
   },

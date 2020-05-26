@@ -150,7 +150,7 @@
 			);
 			//set voice or alternative voice
 			if (!index) {
-				this.textSpeech.voice = this.voiceList[this.voiceList];
+				this.textSpeech.voice = this.voiceList[0];
 			} else {
 				this.textSpeech.voice = this.voiceList[index];
 			}
