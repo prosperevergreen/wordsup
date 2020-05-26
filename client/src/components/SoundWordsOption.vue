@@ -75,7 +75,8 @@
 				this.selected = value;
 				this.noClick = false;
 				//set class for correct and incorrect answer
-				const rightAns = this.options[this.selected].toLowerCase() == this.ans.toLowerCase();
+				const rightAns =
+					this.options[this.selected].toLowerCase() == this.ans.toLowerCase();
 				if (rightAns) {
 					this.activeClass = this.correctClass;
 				} else {
@@ -127,9 +128,20 @@
 			let index = this.voiceList.findIndex(
 				item => item.name === "Google UK English Male"
 			);
+			if (!index) {
+				index = this.voiceList.findIndex(item => item.name === "Daniel");
+			}
+			if (!index) {
+				index = this.voiceList.findIndex(
+					item => item.name === "English United Kindom"
+				);
+			}
+			if (!index) {
+				index = this.voiceList.findIndex(item => item.name === "Alex");
+			}
 			//set voice or alternative voice
 			if (!index) {
-				this.textSpeech.voice = this.voiceList[0];
+				this.textSpeech.voice = this.voiceList[this.voiceList];
 			} else {
 				this.textSpeech.voice = this.voiceList[index];
 			}
