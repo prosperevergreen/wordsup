@@ -11,11 +11,12 @@ const app = express()
 app.use(bodyParser.json());
 app.use(cors());
 
-app.use(function(request, response, next){
-    if(request.protocol == 'http'){
-      response.redirect("https://" + request.headers.host + request.url);
+app.use((req, res, next) => {
+    if (req.header('x-forwarded-proto') !== 'https') {
+      res.redirect(`https://${req.header('host')}${req.url}`)
+    } else {
+      next();
     }
-    next()
   });
 
 const API = require('./routes/api')
@@ -26,7 +27,7 @@ app.use('/api', API)
 //Handle production
 if(process.env.NODE_ENV === 'production'){
     //Static folder
-    app.use(express.static(path.join(__dirname + 'public')));
+    app.use(express.static(path.join(__dirname, 'public')));
     //Handle SPA
     app.get(/.*/,(req, res) => res.sendFile(path.join(__dirname, 'public/index.html')))
 }
