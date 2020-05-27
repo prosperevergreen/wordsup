@@ -9,7 +9,7 @@
 				</v-list-item-content>
 			</v-list-item>
 			<v-divider class="mx-4 my-3"></v-divider>
-			<v-card-text>
+			<v-card-text class="pb-1">
 				<v-item-group v-model="selected">
 					<v-container>
 						<v-row>
@@ -28,9 +28,11 @@
 					</v-container>
 				</v-item-group>
 			</v-card-text>
-
+			<v-divider class="mx-4"></v-divider>
+			<!-- <v-divider></v-divider> -->
 			<v-card-actions class="justify-end mr-4">
-				<v-btn color="purple" large text @click="next()" :disabled="noClick">Next</v-btn>
+				<v-btn color="#673ab7"  class="white--text" large @click="next()" :disabled="noClick" v-if="!goToNextSection">Next</v-btn>
+				<v-btn color="#673ab7" class="white--text" large @click="$emit('goToNextSection')" v-else>Next</v-btn>
 			</v-card-actions>
 		</v-card>
 	</div>
@@ -54,7 +56,8 @@
 			selected: null,
 			checked: false,
 			noClick: true,
-			colorCorrectAns: null
+			colorCorrectAns: null,
+			goToNextSection: false
 		}),
 		methods: {
 			check(value) {
@@ -75,6 +78,7 @@
 				if (this.numQueLeft == 1 && rightAns) {
 					this.$emit("goToNext");
 					this.noClick = true;
+					this.goToNextSection = true;
 				}
 			},
 			next() {

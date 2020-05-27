@@ -26,7 +26,9 @@
 			</v-card-text>
 			<v-divider></v-divider>
 			<v-card-actions class="d-flex justify-end">
-				<v-btn @click="next()" class="mx-2" :disabled="preventCheck" text large color="purple">Next</v-btn>
+				<!-- <v-btn @click="next()" class="mx-2" :disabled="preventCheck" text large color="purple">Next</v-btn> -->
+				<v-btn class="mx-2 white--text" color="#673ab7" large @click="next()" :disabled="preventCheck" v-if="!goToNextSection">Next</v-btn>
+				<v-btn class="mx-2 white--text" color="#673ab7" large @click="$emit('goToNextSection')" v-else>Next</v-btn>
 			</v-card-actions>
 		</v-card>
 	</div>
@@ -42,9 +44,10 @@
 			successRate: Number
 		},
 		data: () => ({
-			feedbackColor: "purple",
+			feedbackColor: "#673ab7",
 			checked: false,
 			preventCheck: true,
+			goToNextSection: false,
 			userInput: "",
 			synth: window.speechSynthesis,
 			voiceList: [],
@@ -74,6 +77,7 @@
 					if (this.numQueLeft == 1) {
 						this.$emit("onNext");
 						this.preventCheck = true;
+						this.goToNextSection = true;
 					}
 				} else {
 					//wrongly answered
@@ -84,7 +88,7 @@
 				this.$emit("onNext");
 				this.disableSpeech = false;
 				this.preventCheck = true;
-				this.feedbackColor = "purple";
+				this.feedbackColor = "#673ab7";
 				this.displayMsg = "Click the microphone to record";
 			},
 			startSpeech() {

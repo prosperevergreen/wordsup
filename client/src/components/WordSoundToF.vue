@@ -32,7 +32,9 @@
 
 		<div class="d-flex justify-end">
 			<!-- prevent checking when nothing is clicked or last qyestion in task -->
-			<v-btn color="purple" large text @click="next()" :disabled="preventNext">Next</v-btn>
+			<!-- <v-btn color="purple" large text @click="next()" :disabled="preventNext">Next</v-btn> -->
+			<v-btn color="#673ab7" class="white--text" large @click="next()" :disabled="preventNext" v-if="!goToNextSection">Next</v-btn>
+			<v-btn color="#673ab7" class="white--text" large @click="$emit('goToNextSection')" v-else>Next</v-btn>
 		</div>
 	</div>
 </template>
@@ -54,6 +56,7 @@
 			btnColor: "cyan",
 			preventClick: false,
 			preventNext: true,
+			goToNextSection: false,
 			onErrorMsgEng: "",
 			onCorrectMsgEng: "",
 			synth: window.speechSynthesis,
@@ -100,6 +103,7 @@
 					if (this.numQueLeft == 1) {
 						this.$emit("onNext");
 						this.preventNext = true;
+						this.goToNextSection = true
 					}
 				} else {
 					this.onErrorMsgEng = "wrong";

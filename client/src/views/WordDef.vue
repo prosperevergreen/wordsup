@@ -7,7 +7,7 @@
 
 				<v-stepper-header>
 					<template v-for="n in steps">
-						<v-stepper-step :key="`word-${n}`" color="purple darken-1" :step="n" editable>
+						<v-stepper-step :key="`word-${n}`" color="#673ab7" :step="n" editable>
 							<!-- Word {{ n }} -->
 						</v-stepper-step>
 
@@ -47,29 +47,32 @@
 						</v-card>
 					</v-stepper-content>
 					<div class="d-flex mx-2 mb-2">
-						<v-btn depressed large @click="el==1?el=steps:el--" color="#EDE7F6">
-							<v-icon left>mdi-chevron-left</v-icon>
+						<v-btn large text @click="el==1?el=steps:el--" class="white--text" color="#673ab7">
+							<!-- <v-icon left>mdi-chevron-left</v-icon> -->
+							Back
 						</v-btn>
 						<v-spacer></v-spacer>
-						<v-btn depressed large @click="el==steps?el=1:el++" color="#EDE7F6">
-							<v-icon left>mdi-chevron-right</v-icon>
+						<v-btn  large @click="el==steps?canGoNext():el++" class="white--text" color="#673ab7">
+							<!-- <v-icon left>mdi-chevron-right</v-icon> -->
+							Next
 						</v-btn>
 					</div>
 				</v-stepper-items>
 			</v-stepper>
 		</div>
-		<v-row class="mt-12">
+		<!-- <v-row>
 			<v-col cols="6">
 				<div>
 					<v-btn block outlined color="purple darken-4" x-large @click="$router.go(-1)">Back</v-btn>
 				</div>
-			</v-col>
-			<v-col cols="6">
+			</v-col> 
+			<v-col cols="12">
 				<div>
 					<v-btn block :disabled="steps != el" color="purple darken-4 white--text" x-large @click="canGoNext()">Next</v-btn>
 				</div>
 			</v-col>
-		</v-row>
+		</v-row> -->
+
 		<v-overlay absolute :value="overlay">
 			<v-card color="purple" dark>
 				<v-card-text>
@@ -107,19 +110,18 @@
 				}
 			},
 			async canGoNext() {
-				this.overlay = true
+				this.overlay = true;
 
 				//prepare data for task
 				await this.generateRandForWordsTask(6);
-				await this.findPicsUrl(this.wordInputs)
+				await this.findPicsUrl(this.wordInputs);
 
-				this.overlay = false
+				this.overlay = false;
 				//go to tasks
 				this.$router.push("/part-1");
 			},
 			async generateRandForWordsTask(numOfRandom) {
-
-				console.log("going to random")
+				console.log("going to random");
 				//get random number
 				const random = Math.floor(Math.random() * Math.floor(2000));
 				const randWordsEng = await this.$http
@@ -175,9 +177,7 @@
 				this.$store.commit("setWordPicsUrls", allURLs);
 			}
 		},
-		mounted() {
-			
-		},
+		mounted() {},
 		//On refresh get words for display
 		created() {
 			this.exactDetails = this.$store.getters.getExactWordsDetails;

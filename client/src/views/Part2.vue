@@ -17,21 +17,21 @@
 
 			<v-stepper-items>
 				<v-stepper-content step="1" style="padding-bottom: 10px;">
-					<word-sound-task v-if="e1 == 1" :sound="optionListEng" :que="question" :ans="question" :queCounter="taskQuestionCounter+1" :numQueLeft="numQueLeft" :successRate="rate" @onCheck="checked($event)" @onNext="nextQue()" />
+					<word-sound-task v-if="e1 == 1" :sound="optionListEng" :que="question" :ans="question" :queCounter="taskQuestionCounter+1" :numQueLeft="numQueLeft" :successRate="rate" @onCheck="checked($event)" @onNext="nextQue()" @goToNextSection="nextTask()" />
 				</v-stepper-content>
 
 				<v-stepper-content step="2" style="padding-bottom: 10px;">
-					<word-trans-task v-if="e1 == 2" :trans="optionListRu" :que="question" :ans="answer" :queCounter="taskQuestionCounter+1" :numQueLeft="numQueLeft" :successRate="rate" @onCheck="checked($event)" @onNext="nextQue()" />
+					<word-trans-task v-if="e1 == 2" :trans="optionListRu" :que="question" :ans="answer" :queCounter="taskQuestionCounter+1" :numQueLeft="numQueLeft" :successRate="rate" @onCheck="checked($event)" @onNext="nextQue()" @goToNextSection="nextTask()" />
 				</v-stepper-content>
 
 				<v-stepper-content step="3" style="padding-bottom: 10px;">
-					<word-pic-task v-if="e1 == 3" :imageUrl="optionListImgUrl" :que="question" :ans="imageUrl" :queCounter="taskQuestionCounter+1" :numQueLeft="numQueLeft" :successRate="rate" @onCheck="checked($event)" @onNext="nextQue()" />
+					<word-pic-task v-if="e1 == 3" :imageUrl="optionListImgUrl" :que="question" :ans="imageUrl" :queCounter="taskQuestionCounter+1" :numQueLeft="numQueLeft" :successRate="rate" @onCheck="checked($event)" @onNext="nextQue()" @goToNextSection="nextTask()" />
 				</v-stepper-content>
 			</v-stepper-items>
 		</v-stepper>
-		<div class="mt-12">
+		<!-- <div class="mt-12">
 			<v-btn block :disabled="disable" @click="nextTask()" color="purple darken-4 white--text" x-large>Continue</v-btn>
-		</div>
+		</div> -->
 	</div>
 </template>
 <script>

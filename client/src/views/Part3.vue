@@ -4,12 +4,12 @@
 		<div class="mt-12">
 			<transition mode="out-in" enter-active-class="animated flipInY">
 				<!-- set props Task1: For Eng word->russia options and Task 2 Sound->English options  -->
-				<component :is="taskName[taskLevelCounter]" @onNext="nextQue()" @onCheck="checked($event)" :imgUrl="imageUrl" :sound="question" :que="question" :ans="question" :successRate="rate" :queCounter="taskQuestionCounter+1" :numQueLeft="numQueLeft"></component>
+				<component :is="taskName[taskLevelCounter]" @goToNextSection="nextTask()" @onNext="nextQue()" @onCheck="checked($event)" :imgUrl="imageUrl" :sound="question" :que="question" :ans="question" :successRate="rate" :queCounter="taskQuestionCounter+1" :numQueLeft="numQueLeft"></component>
 			</transition>
 		</div>
-		<div class="mt-12">
+		<!-- <div class="mt-12">
 			<v-btn block :disabled="disable" @click="nextTask()" color="purple darken-4 white--text" x-large>Continue</v-btn>
-		</div>
+		</div> -->
 	</div>
 
 </template>
