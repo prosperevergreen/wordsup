@@ -20,9 +20,13 @@
 						<v-card class="mx-auto">
 							<v-list-item three-line>
 								<v-list-item-content>
-									<div class="overline">{{exactDetails[n-1].pos}}</div>
+									<div class="d-flex justify-space-between">
+										<div class="overline">{{exactDetails[n-1].translation}}</div>
+										<div class="overline">{{exactDetails[n-1].pos}}</div>
+									</div>
+									
 									<v-list-item-title class="headline mb-1 text-uppercase">{{exactDetails[n-1].text}}</v-list-item-title>
-									<v-list-item-subtitle>{{exactDetails[n-1].translation}}</v-list-item-subtitle>
+									<v-list-item-subtitle>{{exactDetails[n-1].transcript}}</v-list-item-subtitle>									
 								</v-list-item-content>
 								<!-- <v-list-item-avatar tile size="80" color="grey"></v-list-item-avatar> -->
 							</v-list-item>
@@ -31,6 +35,7 @@
 								<!-- <p>{{exactDetails[n-1].pos}}</p> -->
 								<div v-if="exactDetails[n-1].examples">
 									<p>
+										
 										<span class="title font-weight-light black--text">Example</span>
 										<br>
 										{{exactDetails[n-1].examples[0].text}}
