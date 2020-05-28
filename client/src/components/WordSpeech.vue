@@ -183,4 +183,8 @@
 		/* font-weight: bold; */
 		font-size: 1.35rem;
 	}
+	.avoid-clicks {
+		pointer-events: none;
+		color: rgba(0,0,0,0.4) !important;
+	}
 </style>

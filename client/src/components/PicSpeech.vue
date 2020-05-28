@@ -179,3 +179,9 @@
 		}
 	};
 </script>
+<style scoped>
+.avoid-clicks {
+		pointer-events: none;
+		color: rgba(0,0,0,0.4) !important;
+	}
+</style>

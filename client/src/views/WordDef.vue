@@ -52,7 +52,7 @@
 							Back
 						</v-btn>
 						<v-spacer></v-spacer>
-						<v-btn  large @click="el==steps?canGoNext():el++" class="white--text" color="#673ab7">
+						<v-btn large @click="el==steps?canGoNext():el++" class="white--text" color="#673ab7">
 							<!-- <v-icon left>mdi-chevron-right</v-icon> -->
 							Next
 						</v-btn>
@@ -121,7 +121,7 @@
 				this.$router.push("/part-1");
 			},
 			async generateRandForWordsTask(numOfRandom) {
-				console.log("going to random");
+				// console.log("going to random");
 				//get random number
 				const random = Math.floor(Math.random() * Math.floor(2000));
 				const randWordsEng = await this.$http
@@ -143,17 +143,13 @@
 					});
 
 				// searching for pic of random words
-				const randImageUrls = [];
-				for (let i = 0; i < randWordsEng.length; i++) {
-					const Url = await this.$http
-						.get("api/unsplash/" + randWordsEng[i])
-						.then(res => {
-							//extract random words from object
-							return res.data;
-						})
-						.catch(err => console.log(err));
-					randImageUrls.push(Url);
-				}
+				const randImageUrls = await this.$http
+					.get("api/unsplash/random/" + randWordsEng.length)
+					.then(res => {
+						//extract random words from object
+						return res.data;
+					})
+					.catch(err => console.log(err));
 
 				this.$store.commit("setRandomWords", {
 					eng: randWordsEng,
@@ -162,19 +158,28 @@
 				});
 			},
 			async findPicsUrl(wordList) {
-				const allURLs = [];
+				const searchImgURLs = [];
 				for (let i = 0; i < wordList.length; i++) {
 					// searching for pic url
-					const Url = await this.$http
+					searchImgURLs.push(this.$http
 						.get("api/unsplash/" + wordList[i])
 						.then(res => {
 							//extract random words from object
 							return res.data;
 						})
-						.catch(err => console.log(err));
-					allURLs.push(Url);
+						.catch(err => console.log(err)));
 				}
-				this.$store.commit("setWordPicsUrls", allURLs);
+
+				const processedURLs = await Promise
+					.all(searchImgURLs)
+					.catch(errors => {
+						// react on errors.
+						console.error(errors);
+					});
+
+				console.log(processedURLs)
+
+				this.$store.commit("setWordPicsUrls", processedURLs);
 			}
 		},
 		mounted() {},

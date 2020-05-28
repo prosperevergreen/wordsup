@@ -149,6 +149,7 @@
 	}
 	.avoid-clicks {
 		pointer-events: none;
+		color: rgba(0,0,0,0.4) !important;
 	}
 	.text-above-image.v-card__text {
 		padding-bottom: 0px;

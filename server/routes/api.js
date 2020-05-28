@@ -244,7 +244,7 @@ router.get("/oxford-dic-exists/:word", async (req, res) => {
 router.get("/pixabay/:word", async (req, res) => {
   await pixabay
     .get("", {
-      params: { q: req.params.word },
+      params: { q: req.params.word, category: 'education,computer,science' },
     })
     .then((data) => {
       // console.log(data);
@@ -255,11 +255,29 @@ router.get("/pixabay/:word", async (req, res) => {
     });
 });
 
+
+
+// for geting pics from unsplash
+router.get("/unsplash/random/:count", async (req, res) => {
+  await unsplash
+    .get("photos/random", {
+      params: { count: parseInt(req.params.count), orientation: 'landscape' },
+    })
+    .then((response) => {
+      // console.log(data);
+      const randImgArr = response.data.map(rand => rand.urls.small)
+      res.send(randImgArr);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
+
 // for geting pics from unsplash
 router.get("/unsplash/:word", async (req, res) => {
   await unsplash
-    .get("", {
-      params: { query: req.params.word, page: 1, per_page: 1, orientation: 'landscape' },
+    .get("search/photos/", {
+      params: { query: req.params.word, page: 1, per_page: 1, orientation: 'landscape',  },
     })
     .then((data) => {
       // console.log(data);

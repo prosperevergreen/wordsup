@@ -35,8 +35,8 @@
 						Back
 					</v-btn>
 					<v-spacer></v-spacer>
-					<v-btn v-if="!disableNext" class="white--text" color="#673ab7" @click="step++">Next</v-btn>
-					<v-btn v-else class="white--text" color="#673ab7" @click="canGoNext()">Next</v-btn>
+					<v-btn v-if="!disableNext" large class="white--text" color="#673ab7" @click="step++">Next</v-btn>
+					<v-btn v-else large class="white--text" color="#673ab7" @click="canGoNext()">Next</v-btn>
 				</v-card-actions>
 			</v-card>
 		</div>

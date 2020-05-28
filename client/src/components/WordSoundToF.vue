@@ -189,6 +189,7 @@
 	}
 	.avoid-clicks {
 		pointer-events: none;
+		color: rgba(0,0,0,0.4) !important;
 	}
 	.errorMsgEng >>> .v-messages__message {
 		font-size: 15px;

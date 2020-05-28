@@ -33,10 +33,10 @@
 		</v-navigation-drawer> -->
 
 		<v-app-bar fixed color="purple darken-4" dark app>
-			<v-toolbar-title>
-				<v-list-item two-line style="padding: 0">
-					<v-list-item-avatar>
-						<v-img :src="require('@/assets/' + icon)"></v-img>
+			<v-toolbar-title :to="'/'">
+				<v-list-item  two-line style="padding: 0">
+					<v-list-item-avatar >
+						<v-img  :src="require('@/assets/' + icon)"></v-img>
 					</v-list-item-avatar>
 					<v-list-item-content>
 						<v-list-item-title class="title" style="line-height: 1.2;">MemRa</v-list-item-title>
