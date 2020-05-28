@@ -177,7 +177,7 @@
 						console.error(errors);
 					});
 
-				console.log(processedURLs)
+				// console.log(processedURLs)
 
 				this.$store.commit("setWordPicsUrls", processedURLs);
 			}
