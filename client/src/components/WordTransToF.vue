@@ -4,8 +4,13 @@
 			<v-progress-linear v-model="successRate" :color="percentageColor"></v-progress-linear>
 			<v-card-text>
 				<div class="font-weight-light d-flex justify-end mb-4">Question {{queCounter}}</div>
-				<v-text-field readonly :error-messages="onErrorMsgEng" label="Word" :success-messages="onCorrectMsgEng" v-model="que" outlined rounded :class="textColor" class="centered-input-trans"></v-text-field>
-				<v-text-field readonly :error-messages="onErrorMsgRu" label="Translate" :success-messages="onCorrectMsgRu" v-model="trans" outlined rounded :class="textColor" class="centered-input-trans errorMsg"></v-text-field>
+				<v-text-field readonly :error-messages="onErrorMsgEng" label="Word" :success-messages="onCorrectMsgEng" v-model="que" outlined :class="textColor" class="centered-input-trans"></v-text-field>
+				<div class="d-flex justify-center">
+					<v-icon>
+						mdi-swap-vertical-bold
+					</v-icon>
+				</div>
+				<v-text-field readonly :error-messages="onErrorMsgRu" label="Translate" :success-messages="onCorrectMsgRu" v-model="trans" outlined :class="textColor" class="centered-input-trans errorMsg"></v-text-field>
 			</v-card-text>
 			<v-divider></v-divider>
 			<v-card-actions class="d-flex mx-2 mb-2">
