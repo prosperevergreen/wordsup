@@ -64,7 +64,6 @@
 		data: () => ({
 			wordsInfo: "Do you mean?",
 			index: "",
-			multiOption: [],
 			value: 1,
 			step: 1,
 			selected: [],

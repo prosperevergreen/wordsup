@@ -7,7 +7,7 @@
 			<v-card-text>
 				<div class="font-weight-light d-flex justify-end mb-4">Question {{queCounter}}</div>
 				<!-- form field for displaying question -->
-				<v-text-field readonly :error-messages="onErrorMsgEng" label="Word" :success-messages="onCorrectMsgEng" v-model="que" outlined rounded :class="textColor" class="centered-input errorMsgEng"></v-text-field>
+				<v-text-field readonly :error-messages="onErrorMsgEng" label="Word" :success-messages="onCorrectMsgEng" v-model="que" outlined :class="textColor" class="centered-input errorMsgEng"></v-text-field>
 				<!-- Button for playing audio -->
 				<div v-ripple class="pa-4" @click="playSound(sound)">
 					<div class="d-flex justify-center">
@@ -157,7 +157,7 @@
 			}
 			if (index == -1) {
 				index = this.voiceList.findIndex(
-					item => item.name === "English United Kindom"
+					item => item.name === "English United Kingdom"
 				);
 			}
 			if (index == -1) {

@@ -44,7 +44,7 @@
 			rulesArray: [[value => !!value || "Required."]],
 			valid: false,
 			words: [""],
-			wordsInfo: "Please input your words. A max. of seven words are allowed",
+			wordsInfo: "Enter the English words or phrases you'll like to learn.",
 			overlay: false
 		}),
 		methods: {
@@ -118,7 +118,8 @@
 			},
 			//gets words from dictionary
 			async getExist(word) {
-				return await this.$http
+				// return this.$http
+				return this.$http
 					.get("api//yandex-dic/en-ru/" + word)
 					.then(res => {
 						if (!res.data.error) {
@@ -139,15 +140,30 @@
 			},
 			//checks if input is a real word
 			async setExist() {
-				let existsArr = [];
-				for (var i = 0, len = this.words.length; i < len; i++) {
-					let wordExists = await this.getExist(this.words[i]);
-					if (wordExists.error) {
-						this.rulesArray[i].push(wordExists.data);
-					}
-					existsArr.push(wordExists.data);
+				// let existsArr = [];
+				// for (var i = 0, len = this.words.length; i < len; i++) {
+				// 	let wordExists = await this.getExist(this.words[i]);
+				// 	if (wordExists.error) {
+				// 		this.rulesArray[i].push(wordExists.data);
+				// 	}
+				// 	existsArr.push(wordExists.data);
+				// }
+
+				let wordExists = [];
+				for (var i = 0; i < this.words.length; i++) {
+					wordExists.push(this.getExist(this.words[i]));
 				}
-				return existsArr;
+				let existsArr = await Promise.all(wordExists)
+				let resultData = []
+				for (i = 0; i < existsArr.length; i++) {
+					if (existsArr[i].error) {
+						this.rulesArray[i].push(existsArr[i].data);
+					}else{
+						resultData.push(existsArr[i].data)
+					}
+				}
+				// console.log(existsArr);
+				return resultData;
 			},
 			resetExistsValid(index) {
 				if (this.rulesArray[index].length > 1) {

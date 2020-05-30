@@ -5,7 +5,7 @@
 				Login
 			</v-card-title>
 			<v-card-text>
-				<v-form ref="form" v-model="valid">
+				<v-form ref="form" v-model="valid" @submit.prevent="onSubmit()">
 					<v-alert dense outlined class="white" type="error" v-if="!isCorrect">
 						Incorrect <strong>username</strong> or <strong>password</strong>.
 					</v-alert>

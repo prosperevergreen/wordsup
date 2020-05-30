@@ -136,7 +136,7 @@
 			}
 			if (index == -1) {
 				index = this.voiceList.findIndex(
-					item => item.name === "English United Kindom"
+					item => item.name === "English United Kingdom"
 				);
 			}
 			if (index == -1) {

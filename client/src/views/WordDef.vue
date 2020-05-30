@@ -97,13 +97,10 @@
 		},
 		data: () => ({
 			wordsInfo: "Word Definition",
-			index: "",
-			multiOption: [],
 			exactDetails: [],
 			wordInputs: [],
 			steps: 3,
 			el: 1,
-			current: 0,
 			overlay: false
 		}),
 		methods: {

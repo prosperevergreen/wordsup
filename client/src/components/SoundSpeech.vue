@@ -190,8 +190,8 @@
 		},
 		async created() {
 			//get voice
+			// this.synth = window.speechSynthesis
 			this.voiceList = this.synth.getVoices();
-
 			//select voice
 			let index = this.voiceList.findIndex(
 				item => item.name === "Google UK English Male"
@@ -201,7 +201,7 @@
 			}
 			if (index == -1) {
 				index = this.voiceList.findIndex(
-					item => item.name === "English United Kindom"
+					item => item.name === "English United Kingdom"
 				);
 			}
 			if (index == -1) {
@@ -213,7 +213,6 @@
 			} else {
 				this.textSpeech.voice = this.voiceList[index];
 			}
-
 			// console.log(index);
 		}
 	};
