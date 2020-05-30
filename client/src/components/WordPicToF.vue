@@ -5,11 +5,7 @@
 			<v-card-text class="text-above-image">
 				<div class="font-weight-light mb-4 text-end">Question {{queCounter}}</div>
 				<v-text-field readonly :error-messages="onErrorMsgEng" label="Word" :success-messages="onCorrectMsgEng" v-model="que" outlined :class="textColor" class="centered-input-pic errorMsgEng"></v-text-field>
-				<div class="d-flex justify-center">
-					<v-icon>
-						mdi-swap-vertical-bold
-					</v-icon>
-				</div>
+				
 			</v-card-text>
 			<v-img :src="imageUrl" height="194"></v-img>
 			<v-divider class="mt-2"></v-divider>
