@@ -28,8 +28,8 @@
 		},
 		data: () => ({
 			pageInfo: [
-				"Part 1.1: Find the Translation",
-				"Part 1.2: Listen and Match the Sound",
+				"Part 1.1: Match the Translation",
+				"Part 1.2: Match the Sound",
 				"Part 1.3: Match the Picture"
 			],
 			taskName: ["trans-words-tab", "sound-words-tab", "pic-words-tab"],

@@ -29,9 +29,9 @@
 		data: () => ({
 			disable: true,
 			pageInfo: [
-				"Part 3.1: Play and Speak",
-				"Part 3.2: Read and Speak",
-				"Part 3.3: See and Speak"
+				"Part 3.1: Repeat the Sound",
+				"Part 3.2: Pronounce the word",
+				"Part 3.3: Say the picture"
 			],
 			taskName: ["sound-speech-tab", "word-speech-tab", "pic-speech-tab"],
 			wrongQueAnsNum: [],

@@ -50,9 +50,9 @@
 		data: () => ({
 			e1: 1,
 			pageInfo: [
-				"Part 2.1: is it a match?",
-				"Part 2.2: is it a match?",
-				"Part 2.3: is it a match?"
+				"Part 2.1: Does the word match the sound?",
+				"Part 2.2: Does the word match the translation?",
+				"Part 2.3: Does the word match the picture?"
 			],
 			disable: true,
 			wrongQueAnsNum: [],

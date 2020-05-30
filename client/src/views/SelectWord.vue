@@ -62,7 +62,7 @@
 			appInfoBarComp
 		},
 		data: () => ({
-			wordsInfo: "Do you mean?",
+			wordsInfo: "Your word has mutiple meanings. Do you mean?",
 			index: "",
 			value: 1,
 			step: 1,

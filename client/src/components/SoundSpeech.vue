@@ -15,6 +15,7 @@
 				<v-alert color="black" :class="feedbackColor+'--text'" outlined dark icon="mdi-text-to-speech" border="left" prominent>
 					{{displayMsg}}
 				</v-alert>
+				
 				<div class="d-flex justify-center py-4">
 					<v-btn class="mx-2 white--text " v-if="canSpeak" :class="disableSpeech ? 'avoid-clicks' : ''" @click="startSpeech()" fab large :color="feedbackColor">
 						<v-icon x-large dark>mdi-microphone</v-icon>
