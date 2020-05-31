@@ -45,11 +45,11 @@
 				</v-list-item>
 			</v-toolbar-title>
 			<v-spacer></v-spacer>
-			<v-btn text to="/login" v-if="($route.path === '/signup' || '/')">
+			<v-btn text to="/login" v-if="($route.path=='/signup' || $route.path==='/')">
 				LOGIN
 				<v-icon right>mdi-login</v-icon>
 			</v-btn>
-			<v-btn text to="/signup" v-else-if="($route.path === '/login')">
+			<v-btn text to="/signup" v-else-if="($route.path==='/login')">
 				SIGN UP
 				<v-icon right>mdi-login</v-icon>
 			</v-btn>
