@@ -141,7 +141,7 @@
 			let voiceAlex = "alex";
 			let voiceEUK = "english united kingdom";
 
-			console.log(this.voiceList.length);
+			// console.log(this.voiceList.length);
 			if (this.voiceList.length) {
 				// console.log(this.voiceList.length);
 
@@ -170,7 +170,7 @@
 					);
 				}
 
-				console.log(index);
+				// console.log(index);
 				//set voice or alternative voice
 				if (index == -1) {
 					this.textSpeech.voice = this.voiceList[this.voiceList];

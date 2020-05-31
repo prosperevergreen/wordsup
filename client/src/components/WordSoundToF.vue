@@ -37,6 +37,14 @@
 			<v-btn color="#673ab7" class="white--text" large @click="next()" :disabled="preventNext" v-if="!goToNextSection">Next</v-btn>
 			<v-btn color="#673ab7" class="white--text" large @click="$emit('goToNextSection')" v-else>Next</v-btn>
 		</div>
+		<v-overlay absolute :value="overlay">
+			<v-card color="purple" dark>
+				<v-card-text>
+					Setting up pronunciation
+					<v-progress-linear indeterminate color="white" class="mb-0"></v-progress-linear>
+				</v-card-text>
+			</v-card>
+		</v-overlay>
 	</div>
 </template>
 
@@ -62,7 +70,8 @@
 			onCorrectMsgEng: "",
 			synth: window.speechSynthesis,
 			voiceList: [],
-			textSpeech: new window.SpeechSynthesisUtterance()
+			textSpeech: new window.SpeechSynthesisUtterance(),
+			overlay: false
 		}),
 		methods: {
 			check(choice) {
@@ -154,8 +163,9 @@
 			let voiceAlex = "alex";
 			let voiceEUK = "english united kingdom";
 
-			console.log(this.voiceList.length);
+			// console.log(this.voiceList.length);
 			if (this.voiceList.length) {
+				// console.log(this.voiceList.length);
 
 				//select voice
 				let index = this.voiceList.findIndex(
@@ -182,7 +192,7 @@
 					);
 				}
 
-				console.log(index);
+				// console.log(index);
 				//set voice or alternative voice
 				if (index == -1) {
 					this.textSpeech.voice = this.voiceList[this.voiceList];

@@ -60,7 +60,7 @@
 			userInput: "",
 			synth: window.speechSynthesis,
 			voiceList: [],
-			greetingSpeech: new window.SpeechSynthesisUtterance(),
+			textSpeech: new window.SpeechSynthesisUtterance(),
 			canSpeak: true,
 			disableSpeech: false,
 			displayMsg: "Click the microphone to record",
@@ -182,9 +182,9 @@
 			},
 			playSound(sound) {
 				//set statement
-				this.greetingSpeech.text = sound;
+				this.textSpeech.text = sound;
 				//play statement
-				this.synth.speak(this.greetingSpeech);
+				this.synth.speak(this.textSpeech);
 			}
 		},
 		computed: {
@@ -201,13 +201,16 @@
 		mounted() {
 			//get voice
 			this.overlay = true;
+			// this.synth = window.speechSynthesis
+			// console.log(window.speechSynthesis)
 			this.voiceList = this.synth.getVoices();
+
 			let voiceDaniel = "daniel";
 			let voiceGUKM = "google uk english male";
 			let voiceAlex = "alex";
 			let voiceEUK = "english united kingdom";
 
-			console.log(this.voiceList.length);
+
 			if (this.voiceList.length) {
 				// console.log(this.voiceList.length);
 
@@ -236,7 +239,7 @@
 					);
 				}
 
-				console.log(index);
+				// console.log(index);
 				//set voice or alternative voice
 				if (index == -1) {
 					this.textSpeech.voice = this.voiceList[this.voiceList];
