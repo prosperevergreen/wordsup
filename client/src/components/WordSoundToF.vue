@@ -147,29 +147,50 @@
 		},
 		mounted() {
 			//get voice
+			this.overlay = true;
 			this.voiceList = this.synth.getVoices();
-
 			let voiceDaniel = "daniel";
 			let voiceGUKM = "google uk english male";
 			let voiceAlex = "alex";
 			let voiceEUK = "english united kingdom";
 
-			//select voice
-			let index = this.voiceList.findIndex(
-				item =>
-					item.name.toLowerCase() == voiceGUKM ||
-					voiceDaniel ||
-					voiceGUKM ||
-					voiceAlex
-			);
+			console.log(this.voiceList.length);
+			if (this.voiceList.length) {
 
-			//set voice or alternative voice
-			if (index == -1) {
-				this.textSpeech.voice = this.voiceList[this.voiceList];
-			} else {
-				this.textSpeech.voice = this.voiceList[index];
+				//select voice
+				let index = this.voiceList.findIndex(
+					item => item.name.toLowerCase() == voiceGUKM
+				);
+
+				//select voice
+				if (index == -1) {
+					index = this.voiceList.findIndex(
+						item => item.name.toLowerCase() == voiceDaniel
+					);
+				}
+
+				//select voice
+				if (index == -1) {
+					index = this.voiceList.findIndex(
+						item => item.name.toLowerCase() == voiceEUK
+					);
+				}
+				//select voice
+				if (index == -1) {
+					index = this.voiceList.findIndex(
+						item => item.name.toLowerCase() == voiceAlex
+					);
+				}
+
+				console.log(index);
+				//set voice or alternative voice
+				if (index == -1) {
+					this.textSpeech.voice = this.voiceList[this.voiceList];
+				} else {
+					this.textSpeech.voice = this.voiceList[index];
+				}
+				this.overlay = false;
 			}
-
 			// console.log(index);
 		}
 	};

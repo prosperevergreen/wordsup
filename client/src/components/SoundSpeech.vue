@@ -15,7 +15,7 @@
 				<v-alert color="black" :class="feedbackColor+'--text'" outlined dark icon="mdi-text-to-speech" border="left" prominent>
 					{{displayMsg}}
 				</v-alert>
-				
+
 				<div class="d-flex justify-center py-4">
 					<v-btn class="mx-2 white--text " v-if="canSpeak" :class="disableSpeech ? 'avoid-clicks' : ''" @click="startSpeech()" fab large :color="feedbackColor">
 						<v-icon x-large dark>mdi-microphone</v-icon>
@@ -32,6 +32,14 @@
 				<v-btn class="mx-2 white--text" color="#673ab7" large @click="$emit('goToNextSection')" v-else>Next</v-btn>
 			</v-card-actions>
 		</v-card>
+		<v-overlay absolute :value="overlay">
+			<v-card color="purple" dark>
+				<v-card-text>
+					Setting up pronunciation
+					<v-progress-linear indeterminate color="white" class="mb-0"></v-progress-linear>
+				</v-card-text>
+			</v-card>
+		</v-overlay>
 	</div>
 </template>
 
@@ -55,7 +63,8 @@
 			greetingSpeech: new window.SpeechSynthesisUtterance(),
 			canSpeak: true,
 			disableSpeech: false,
-			displayMsg: "Click the microphone to record"
+			displayMsg: "Click the microphone to record",
+			overlay: false
 		}),
 		methods: {
 			check() {
@@ -191,23 +200,51 @@
 		},
 		mounted() {
 			//get voice
+			this.overlay = true;
 			this.voiceList = this.synth.getVoices();
-			let voiceDaniel = "daniel"
-			let voiceGUKM = "google uk english male"
-			let voiceAlex = "alex"
-			let voiceEUK = "english united kingdom"
-			
-			//select voice
-			let index = this.voiceList.findIndex(
-				item => item.name.toLowerCase() == voiceGUKM || voiceDaniel || voiceGUKM || voiceAlex
-			);
-			//set voice or alternative voice
-			if (index == -1) {
-				this.textSpeech.voice = this.voiceList[this.voiceList];
-			} else {
-				this.textSpeech.voice = this.voiceList[index];
+			let voiceDaniel = "daniel";
+			let voiceGUKM = "google uk english male";
+			let voiceAlex = "alex";
+			let voiceEUK = "english united kingdom";
+
+			console.log(this.voiceList.length);
+			if (this.voiceList.length) {
+				// console.log(this.voiceList.length);
+
+				//select voice
+				let index = this.voiceList.findIndex(
+					item => item.name.toLowerCase() == voiceGUKM
+				);
+
+				//select voice
+				if (index == -1) {
+					index = this.voiceList.findIndex(
+						item => item.name.toLowerCase() == voiceDaniel
+					);
+				}
+
+				//select voice
+				if (index == -1) {
+					index = this.voiceList.findIndex(
+						item => item.name.toLowerCase() == voiceEUK
+					);
+				}
+				//select voice
+				if (index == -1) {
+					index = this.voiceList.findIndex(
+						item => item.name.toLowerCase() == voiceAlex
+					);
+				}
+
+				console.log(index);
+				//set voice or alternative voice
+				if (index == -1) {
+					this.textSpeech.voice = this.voiceList[this.voiceList];
+				} else {
+					this.textSpeech.voice = this.voiceList[index];
+				}
+				this.overlay = false;
 			}
-			// console.log(index);
 		}
 	};
 </script>
@@ -215,6 +252,6 @@
 <style scoped>
 	.avoid-clicks {
 		pointer-events: none;
-		color: rgba(0,0,0,0.4) !important;
+		color: rgba(0, 0, 0, 0.4) !important;
 	}
 </style>

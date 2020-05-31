@@ -44,6 +44,14 @@
 				<v-btn color="#673ab7" class="white--text" large @click="$emit('goToNextSection')" v-else>Next</v-btn>
 			</v-card-actions>
 		</v-card>
+		<v-overlay absolute :value="overlay">
+			<v-card color="purple" dark>
+				<v-card-text>
+					Setting up pronunciation
+					<v-progress-linear indeterminate color="white" class="mb-0"></v-progress-linear>
+				</v-card-text>
+			</v-card>
+		</v-overlay>
 	</div>
 
 </template>
@@ -69,7 +77,8 @@
 			colorCorrectAns: null,
 			synth: window.speechSynthesis,
 			voiceList: [],
-			textSpeech: new window.SpeechSynthesisUtterance()
+			textSpeech: new window.SpeechSynthesisUtterance(),
+			overlay: false
 		}),
 		methods: {
 			check(value) {
@@ -125,28 +134,51 @@
 		},
 		mounted() {
 			//get voice
+			this.overlay = true
 			this.voiceList = this.synth.getVoices();
 			let voiceDaniel = "daniel";
 			let voiceGUKM = "google uk english male";
 			let voiceAlex = "alex";
 			let voiceEUK = "english united kingdom";
 
-			//select voice
-			let index = this.voiceList.findIndex(
-				item =>
-					item.name.toLowerCase() == voiceGUKM ||
-					voiceDaniel ||
-					voiceGUKM ||
-					voiceAlex
-			);
-			//set voice or alternative voice
-			if (index == -1) {
-				this.textSpeech.voice = this.voiceList[this.voiceList];
-			} else {
-				this.textSpeech.voice = this.voiceList[index];
-			}
+			console.log(this.voiceList.length);
+			if (this.voiceList.length) {
+				// console.log(this.voiceList.length);
 
-			// console.log(index);
+				//select voice
+				let index = this.voiceList.findIndex(
+					item => item.name.toLowerCase() == voiceGUKM
+				);
+
+				//select voice
+				if (index == -1) {
+					index = this.voiceList.findIndex(
+						item => item.name.toLowerCase() == voiceDaniel
+					);
+				}
+
+				//select voice
+				if (index == -1) {
+					index = this.voiceList.findIndex(
+						item => item.name.toLowerCase() == voiceEUK
+					);
+				}
+				//select voice
+				if (index == -1) {
+					index = this.voiceList.findIndex(
+						item => item.name.toLowerCase() == voiceAlex
+					);
+				}
+
+				console.log(index);
+				//set voice or alternative voice
+				if (index == -1) {
+					this.textSpeech.voice = this.voiceList[this.voiceList];
+				} else {
+					this.textSpeech.voice = this.voiceList[index];
+				}
+				this.overlay = false
+			}
 		}
 	};
 </script>
