@@ -191,23 +191,12 @@
 		},
 		async created() {
 			//get voice
-			// this.synth = window.speechSynthesis
 			this.voiceList = this.synth.getVoices();
+			
 			//select voice
 			let index = this.voiceList.findIndex(
-				item => item.name === "Google UK English Male"
+				item => item.name === "Google UK English Male" || "Daniel" || "English United Kingdom" || "Alex"
 			);
-			if (index == -1) {
-				index = this.voiceList.findIndex(item => item.name === "Daniel");
-			}
-			if (index == -1) {
-				index = this.voiceList.findIndex(
-					item => item.name === "English United Kingdom"
-				);
-			}
-			if (index == -1) {
-				index = this.voiceList.findIndex(item => item.name === "Alex");
-			}
 			//set voice or alternative voice
 			if (index == -1) {
 				this.textSpeech.voice = this.voiceList[this.voiceList];
