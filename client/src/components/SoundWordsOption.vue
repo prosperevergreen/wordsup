@@ -91,7 +91,7 @@
 				if (this.numQueLeft == 1 && rightAns) {
 					this.$emit("goToNext");
 					this.noClick = true;
-					this.goToNextSection = true
+					this.goToNextSection = true;
 				}
 			},
 			next() {
@@ -123,13 +123,21 @@
 					: "success";
 			}
 		},
-		async created() {
+		mounted() {
 			//get voice
 			this.voiceList = this.synth.getVoices();
+			let voiceDaniel = "daniel";
+			let voiceGUKM = "google uk english male";
+			let voiceAlex = "alex";
+			let voiceEUK = "english united kingdom";
 
 			//select voice
 			let index = this.voiceList.findIndex(
-				item => item.name === "Google UK English Male" || "Daniel" || "English United Kingdom" || "Alex"
+				item =>
+					item.name.toLowerCase() == voiceGUKM ||
+					voiceDaniel ||
+					voiceGUKM ||
+					voiceAlex
 			);
 			//set voice or alternative voice
 			if (index == -1) {

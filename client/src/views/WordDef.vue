@@ -96,7 +96,7 @@
 			appInfoBarComp
 		},
 		data: () => ({
-			wordsInfo: "Carefully learn the word details",
+			wordsInfo: "Carefully learn the word's details",
 			exactDetails: [],
 			wordInputs: [],
 			steps: 3,

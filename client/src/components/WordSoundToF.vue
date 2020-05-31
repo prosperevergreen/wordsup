@@ -8,7 +8,7 @@
 				<div class="font-weight-light d-flex justify-end mb-4">Question {{queCounter}}</div>
 				<!-- form field for displaying question -->
 				<v-text-field readonly :error-messages="onErrorMsgEng" label="Word" :success-messages="onCorrectMsgEng" v-model="que" outlined :class="textColor" class="centered-input errorMsgEng"></v-text-field>
-				
+
 				<!-- Button for playing audio -->
 				<div v-ripple class="pa-4" @click="playSound(sound)">
 					<div class="d-flex justify-center">
@@ -104,7 +104,7 @@
 					if (this.numQueLeft == 1) {
 						this.$emit("onNext");
 						this.preventNext = true;
-						this.goToNextSection = true
+						this.goToNextSection = true;
 					}
 				} else {
 					this.onErrorMsgEng = "wrong";
@@ -145,14 +145,24 @@
 					: "success";
 			}
 		},
-		async created() {
+		mounted() {
 			//get voice
 			this.voiceList = this.synth.getVoices();
 
+			let voiceDaniel = "daniel";
+			let voiceGUKM = "google uk english male";
+			let voiceAlex = "alex";
+			let voiceEUK = "english united kingdom";
+
 			//select voice
 			let index = this.voiceList.findIndex(
-				item => item.name === "Google UK English Male" || "Daniel" || "English United Kingdom" || "Alex"
+				item =>
+					item.name.toLowerCase() == voiceGUKM ||
+					voiceDaniel ||
+					voiceGUKM ||
+					voiceAlex
 			);
+
 			//set voice or alternative voice
 			if (index == -1) {
 				this.textSpeech.voice = this.voiceList[this.voiceList];
@@ -179,7 +189,7 @@
 	}
 	.avoid-clicks {
 		pointer-events: none;
-		color: rgba(0,0,0,0.4) !important;
+		color: rgba(0, 0, 0, 0.4) !important;
 	}
 	.errorMsgEng >>> .v-messages__message {
 		font-size: 15px;

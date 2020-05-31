@@ -34,9 +34,9 @@
 
 		<v-app-bar fixed color="purple darken-4" dark app>
 			<v-toolbar-title :to="'/'">
-				<v-list-item  two-line style="padding: 0">
-					<v-list-item-avatar >
-						<v-img  :src="require('@/assets/' + icon)"></v-img>
+				<v-list-item two-line style="padding: 0">
+					<v-list-item-avatar>
+						<v-img :src="require('@/assets/' + icon)"></v-img>
 					</v-list-item-avatar>
 					<v-list-item-content>
 						<v-list-item-title class="title" style="line-height: 1.2;">MemRa</v-list-item-title>
@@ -45,11 +45,11 @@
 				</v-list-item>
 			</v-toolbar-title>
 			<v-spacer></v-spacer>
-			<v-btn text to="/login" v-if="($route.path=='/signup')|| ($route.path==='/')">
+			<v-btn text to="/login" v-if="($route.path === '/signup' || '/')">
 				LOGIN
 				<v-icon right>mdi-login</v-icon>
 			</v-btn>
-			<v-btn text to="/signup" v-else-if="($route.path==='/login')">
+			<v-btn text to="/signup" v-else-if="($route.path === '/login')">
 				SIGN UP
 				<v-icon right>mdi-login</v-icon>
 			</v-btn>
