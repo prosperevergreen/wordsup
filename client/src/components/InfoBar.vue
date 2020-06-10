@@ -1,6 +1,6 @@
 <template>
 	<v-alert class="purple--text text--accent-4 body-1" color="rgba(255, 255, 255, 0.7)" elevation="1">
-		<div class="text-center text-uppercase error--text"  style="overflow-wrap: break-word;">{{ info }}</div>
+		<div class="text-center text-uppercase" style="color: #fd00ff; overflow-wrap: break-word;">{{ info }}</div>
 	</v-alert>
 </template>
 <script>

@@ -8,7 +8,7 @@
 					<div>
 						<v-rating v-model="totalRating" half-increments readonly background-color="purple" color="purple"></v-rating>
 					</div>
-					<div class="overline">{{ 3 > totalRating ? 'Keep it up' : 'Excellent'}}</div>
+					<div class="overline">{{recommendation}}</div>
 				</div>
 			</v-card-title>
 
@@ -38,9 +38,9 @@
 
 			<div class="mx-4 my-2">
 				<v-btn v-if="part == completed && completed != 3" dark block color="purple darken-4" :to="'/part-'+(part+1)" x-large>Go to Part {{part+1}}</v-btn>
-				<div class="mt-2 pl-3 d-flex align-center justify-space-between">
-					<span>Repeat?</span>
-					<v-btn text color="purple darken-4" :to="'/part-'+part" class="pl-1" x-large>part {{part}}</v-btn>
+				<div class="mt-2 pl-3 d-flex justify-end">
+					<!-- <span>Repeat?</span> -->
+					<v-btn text color="purple darken-4" :to="'/part-'+part" class="pl-1" x-large>Repeat</v-btn>
 				</div>
 			</div>
 		</v-card>
@@ -76,6 +76,15 @@
 					totalRating += this.subPartRating[i];
 				}
 				return (totalRating / 3);
+			},
+			recommendation(){
+				if(this.totalRating > 4){
+					return "Excellent"
+				}else if(this.totalRating > 3){
+					return "Good but you can to better"
+				}else {
+					return "Try again you can do better"
+				}
 			}
 		},
 	};

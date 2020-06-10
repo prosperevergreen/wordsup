@@ -11,9 +11,9 @@ const UserInputs = () => import( "../views/UserInputs.vue");
 const SelectWord = () => import(/* webpackPreload: true */ "../views/SelectWord.vue");
 const DefineWord = () => import(/* webpackPreload: true */ "../views/WordDef.vue");
 const PartOne = () => import(/* webpackPreload: true */ "../views/Part1.vue");
-const PartTwo = () => import(/* webpackPrefetch: true */ "../views/Part2.vue");
-const PartThree = () => import(/* webpackPrefetch: true */ "../views/Part3.vue");
-const Results = () => import(/* webpackPrefetch: true */ "../views/Results.vue");
+const PartTwo = () => import(/* webpackPreload: true */ "../views/Part2.vue");
+const PartThree = () => import(/* webpackPreload: true */ "../views/Part3.vue");
+const Results = () => import(/* webpackPreload: true */ "../views/Results.vue");
 
 // const EnglishPart = () =>
 //   import(/* webpackPrefetch: true */ "../views/EnglishLevel.vue");

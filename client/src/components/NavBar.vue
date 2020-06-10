@@ -33,13 +33,13 @@
 		</v-navigation-drawer> -->
 
 		<v-app-bar fixed color="purple darken-4" dark app>
-			<v-toolbar-title :to="'/'">
-				<v-list-item two-line style="padding: 0">
+			<v-toolbar-title >
+				<v-list-item to="/" ripple dark replace exact two-line color="rgba(0, 0, 0, 0)" style="padding: 0">
 					<v-list-item-avatar>
 						<v-img :src="require('@/assets/' + icon)"></v-img>
 					</v-list-item-avatar>
 					<v-list-item-content>
-						<v-list-item-title class="title" style="line-height: 1.2;">MemRa</v-list-item-title>
+						<v-list-item-title class="title white--text" style="line-height: 1.2;">Memra</v-list-item-title>
 						<v-list-item-subtitle>Memory Ratio</v-list-item-subtitle>
 					</v-list-item-content>
 				</v-list-item>

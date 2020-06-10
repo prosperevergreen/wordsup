@@ -6,7 +6,7 @@
 				WELCOME TO MEMRA
 			</v-card-title>
 			<v-card-text class="text-center">
-				Learn Your Words Happily.
+				Have Fun Learning Your Words
 			</v-card-text>
 			<div class="mx-4 my-2">
 				<v-btn dark block color="purple darken-4" to="/signup" x-large>Sign up</v-btn>

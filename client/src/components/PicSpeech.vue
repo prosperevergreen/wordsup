@@ -161,8 +161,8 @@
 						alert("Something went wrong");
 					};
 				} else {
-					this.$router.push("/users-words");
 					alert("Please use a chrome or firefox browser");
+					this.$router.push("/users-words");
 				}
 			}
 		},
