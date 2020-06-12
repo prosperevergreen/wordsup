@@ -2,7 +2,7 @@
 	<div>
 		<v-card>
 			<v-card-title class="justify-center">
-				Login
+				LOGIN
 			</v-card-title>
 			<v-card-text>
 				<v-form ref="form" v-model="valid" @submit.prevent="onSubmit()">
@@ -16,7 +16,7 @@
 			<v-card-actions>
 				<v-btn :disabled="!valid" @click="onSubmit()" color="success">Submit</v-btn>
 				<v-spacer></v-spacer>
-				<v-btn text color="grey" replace to="/signup" @click="$emit('switch', false)">signUp</v-btn>
+				<v-btn text color="purple" replace to="/signup" @click="$emit('switch', false)">SIGNUP?</v-btn>
 			</v-card-actions>
 		</v-card>
 	</div>

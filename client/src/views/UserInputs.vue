@@ -10,8 +10,8 @@
 							<v-text-field color="purple" v-model="words[index]" required :rules="rulesArray[index]" @focus="resetExistsValid(index)" :label="'word: ' + (index+1)" clearable outlined :append-icon="canDelete()?'mdi-delete' : ''" @click:append="deleteInput(index)"></v-text-field>
 						</div>
 					</v-col>
-					<v-col cols="12" style="height: 30px; position: relative">
-						<v-btn @click="addInput()" absolute dark fab top right color="purple darken-4" v-show="canAdd()">
+					<v-col cols="12" class="d-flex justify-center" style="height: 30px; position: relative">
+						<v-btn @click="addInput()" absolute dark fab top color="purple darken-4" v-show="canAdd()">
 							<v-icon>mdi-plus</v-icon>
 						</v-btn>
 					</v-col>

@@ -50,7 +50,7 @@
 				<v-icon right>mdi-login</v-icon>
 			</v-btn>
 			<v-btn text to="/signup" v-else-if="($route.path==='/login')">
-				SIGN UP
+				SIGNUP
 				<v-icon right>mdi-login</v-icon>
 			</v-btn>
 			<v-btn text @click="onLogout()" v-else>
