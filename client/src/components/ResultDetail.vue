@@ -81,7 +81,7 @@
 				if(this.totalRating > 4){
 					return "Excellent"
 				}else if(this.totalRating > 3){
-					return "Good but you can to better"
+					return "Good but you can do better"
 				}else {
 					return "Try again you can do better"
 				}

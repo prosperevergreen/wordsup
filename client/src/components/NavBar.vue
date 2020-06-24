@@ -39,8 +39,8 @@
 						<v-img :src="require('@/assets/' + icon)"></v-img>
 					</v-list-item-avatar>
 					<v-list-item-content>
-						<v-list-item-title class="title white--text" style="line-height: 1.2;">Memra</v-list-item-title>
-						<v-list-item-subtitle>Memory Ratio</v-list-item-subtitle>
+						<v-list-item-title class="title white--text" style="line-height: 1.2;">WORDUP</v-list-item-title>
+						<v-list-item-subtitle>Word Upgrade</v-list-item-subtitle>
 					</v-list-item-content>
 				</v-list-item>
 			</v-toolbar-title>

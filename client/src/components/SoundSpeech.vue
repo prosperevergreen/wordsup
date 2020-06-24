@@ -32,14 +32,14 @@
 				<v-btn class="mx-2 white--text" color="#673ab7" large @click="$emit('goToNextSection')" v-else>Next</v-btn>
 			</v-card-actions>
 		</v-card>
-		<v-overlay absolute :value="overlay">
+		<!-- <v-overlay absolute :value="overlay">
 			<v-card color="purple" dark>
 				<v-card-text>
 					Setting up pronunciation
 					<v-progress-linear indeterminate color="white" class="mb-0"></v-progress-linear>
 				</v-card-text>
 			</v-card>
-		</v-overlay>
+		</v-overlay> -->
 	</div>
 </template>
 

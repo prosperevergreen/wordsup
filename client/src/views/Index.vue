@@ -3,7 +3,7 @@
 		<v-card class="pb-1">
 			<v-img :src="require('@/assets/' + icon)" contain height="200px"></v-img>
 			<v-card-title class="justify-center headline font-weight-light text--darken-4 purple--text">
-				WELCOME TO MEMRA
+				WELCOME TO WORDUP
 			</v-card-title>
 			<v-card-text class="text-center">
 				Have Fun Learning Your Words

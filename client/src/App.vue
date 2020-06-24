@@ -1,6 +1,6 @@
 <template>
 	<v-app fixed>
-		<nav-bar class="mb-3" />
+		<nav-bar/>
 		<v-content class="deep-purple lighten-5">
 			<v-container>
 				<v-row class="justify-center">
