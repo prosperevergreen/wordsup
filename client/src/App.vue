@@ -1,7 +1,7 @@
 <template>
 	<v-app fixed>
 		<nav-bar/>
-		<v-content class="deep-purple lighten-5">
+		<v-main class="deep-purple lighten-5">
 			<v-container>
 				<v-row class="justify-center">
 					<v-col sm="8">
@@ -11,7 +11,7 @@
 					</v-col>
 				</v-row>
 			</v-container>
-		</v-content>
+		</v-main>
 	</v-app>
 </template>
 
